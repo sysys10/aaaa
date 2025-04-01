@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm run --filter client build",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+}
