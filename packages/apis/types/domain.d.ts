@@ -51,9 +51,6 @@ interface postRecentQuestionsResponse extends DefaultResponse {
   body: RecentQuestionProps[]
 }
 
-interface RecentQuestionsRequest {
-  userId: string
-}
 
 interface RequestWithUtterance {
   utterance: string

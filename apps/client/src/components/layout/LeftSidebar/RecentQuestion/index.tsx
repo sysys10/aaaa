@@ -1,3 +1,5 @@
+import { recentQuestionStore } from '@stores'
+
 import CustomIcons from '@components/common/CustomIcons'
 
 import { RecentQuestionListProps } from '@types'
@@ -6,10 +8,11 @@ import TimeTag from './TimeTag'
 
 export function RecentQuestionList({
   handleSearchSubmit,
-  recentQuestions,
   handleRemoveRecentQuestion,
   handleAllRecentQuestionRemove
 }: RecentQuestionListProps) {
+  const recentQuestions = recentQuestionStore((s) => s.recentQuestions)
+
   return (
     <>
       <div className='w-full px-3'>

@@ -16,7 +16,6 @@ interface BaseSearchProps {
 }
 
 interface BaseRecentQuestionProps {
-  recentQuestions: RecentQuestionProps[]
   handleRemoveRecentQuestion: (
     params: Pick<
       RequestRemoveUtterance,

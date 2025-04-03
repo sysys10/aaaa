@@ -1,4 +1,4 @@
-import { useUserStore } from '@stores'
+import { recentQuestionStore, useUserStore } from '@stores'
 
 import {
   BodyStringResponse,
@@ -12,14 +12,9 @@ import { postRecentQuestions, postRemoveRecentQuestion } from '@packages/apis'
 
 import { createMutation } from './mutationUtils'
 
-interface RecentQuestionMutationProps {
-  setRecentQuestions: (data: RecentQuestionProps[]) => void
-}
-
-function useRecentQuestionMutation({
-  setRecentQuestions
-}: RecentQuestionMutationProps) {
-  return createMutation<postRecentQuestionsResponse, RecentQuestionsRequest>({
+function useRecentQuestionMutation() {
+  const setRecentQuestions = recentQuestionStore((s) => s.setRecentQuestions)
+  return createMutation<postRecentQuestionsResponse, void>({
     mutationFn: postRecentQuestions,
     onSuccess: (data, _, __) => {
       if (data.success) {
@@ -29,17 +24,14 @@ function useRecentQuestionMutation({
   })
 }
 
-function useRemoveRecentQuestionMutation({
-  setRecentQuestions
-}: RecentQuestionMutationProps) {
-  const user = useUserStore((s) => s.user)
+function useRemoveRecentQuestionMutation() {
+  const setRecentQuestions = recentQuestionStore((s) => s.setRecentQuestions)
+
   return createMutation<BodyStringResponse, RequestRemoveUtterance>({
     mutationFn: postRemoveRecentQuestion,
     onSuccess: async (data, _, __) => {
       if (data.success) {
-        const response = await postRecentQuestions({
-          userId: user?.userId || ''
-        })
+        const response = await postRecentQuestions()
         if (response.success) {
           setRecentQuestions(response.body)
         }

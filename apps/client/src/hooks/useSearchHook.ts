@@ -12,14 +12,9 @@ const useSearchHook = ({
 }) => {
   const { search, handleSearch } = useSearchInput()
   const [recommend, setRecommend] = useState<string[]>([])
-
-  // 추천질문
-
-  // 검색 결과 관련 훅
   const { results, setResults, isFirstSearch, handleResetResults } =
     useSearchResult()
 
-  // 검색 api 관련 훅
   const {
     mutate: searchMutation,
     isPending: searchIsLoading,

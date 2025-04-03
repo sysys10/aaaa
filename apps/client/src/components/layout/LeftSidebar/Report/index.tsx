@@ -104,14 +104,9 @@ function ReportModal({
   return (
     <div
       style={{ visibility: isNewsOpen ? 'visible' : 'hidden' }}
-      className='w-[calc(100vw-19.5rem)] ml-[19.5rem] h-[calc(100vh-var(--topbar-height))] -z-50 mt-[var(--topbar-height)] fixed inset-0 bg-white '
+      className='w-[calc(100vw-19.5rem)] ml-0 md:ml-[19.5rem] h-[calc(100vh-var(--topbar-height))] -z-50 mt-[var(--topbar-height)] fixed inset-0 bg-white '
     >
       <div className='flex flex-col h-full'>
-        {/* <div className='w-full flex justify-between items-end rounded-t-xl pt-5 pb-3 border-b px-5 border-border'>
-          <div className='text-center left-0 right-0'>
-            <h1 className='text-xl font-bold'>{isNewsOpen}</h1>
-          </div>
-        </div> */}
         <div className='overflow-y-auto flex-1 p-8'>
           <h1 className='text-xl font-bold text-aicfo mb-4'>
             "{isNewsOpen} 조회일을 선택해주세요."

@@ -1,4 +1,4 @@
-import { useUserStore } from '@stores'
+import { recentQuestionStore, useUserStore } from '@stores'
 import { useState } from 'react'
 
 import { RecentQuestionProps, RequestRemoveUtterance } from '@types'
@@ -10,28 +10,14 @@ import {
 
 type RemoveRecentQuestionParams = Omit<RequestRemoveUtterance, 'userId'>
 
-interface UseRecentQuestionsReturnProps {
-  recentQuestions: RecentQuestionProps[]
-  handleRemoveRecentQuestion: (params: RemoveRecentQuestionParams) => void
-  handleGetRecentQuestion: () => void
-}
-
-function useRecentQuestions(): UseRecentQuestionsReturnProps {
+function useRecentQuestions() {
   const user = useUserStore((s) => s.user)
 
-  const [recentQuestions, setRecentQuestions] = useState<RecentQuestionProps[]>(
-    []
-  )
-  const { mutate: getRecentQuestion } = useRecentQuestionMutation({
-    setRecentQuestions
-  })
-
-  const { mutate: removeRecentQuestion } = useRemoveRecentQuestionMutation({
-    setRecentQuestions
-  })
+  const { mutate: getRecentQuestion } = useRecentQuestionMutation()
+  const { mutate: removeRecentQuestion } = useRemoveRecentQuestionMutation()
 
   const handleGetRecentQuestion = () => {
-    getRecentQuestion({ userId: user?.userId || '' })
+    getRecentQuestion()
   }
 
   const handleRemoveRecentQuestion = ({
@@ -42,6 +28,7 @@ function useRecentQuestions(): UseRecentQuestionsReturnProps {
   }: RemoveRecentQuestionParams) => {
     const userId = user?.userId
     if (!userId) return
+
     removeRecentQuestion({
       utterance,
       intentCd,
@@ -52,7 +39,6 @@ function useRecentQuestions(): UseRecentQuestionsReturnProps {
   }
 
   return {
-    recentQuestions,
     handleRemoveRecentQuestion,
     handleGetRecentQuestion
   }

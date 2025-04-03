@@ -11,7 +11,6 @@ export function SidebarList({
   sidebarContent,
   handleSearchSubmit,
   handleRemoveRecentQuestion,
-  recentQuestions,
   handleGetRecentQuestion,
   getFdsAlarmCnt
 }: SidebarListProps) {
@@ -38,7 +37,6 @@ export function SidebarList({
             <RecentQuestionList
               handleAllRecentQuestionRemove={handleAllRecentQuestionRemove}
               handleSearchSubmit={handleSearchSubmit}
-              recentQuestions={recentQuestions}
               handleRemoveRecentQuestion={handleRemoveRecentQuestion}
             />
           ) : sidebarContent === 'brf' ? (
@@ -52,6 +50,6 @@ export function SidebarList({
         </div>
       </div>
     ),
-    [sidebarContent, recentQuestions]
+    [sidebarContent]
   )
 }

@@ -12,13 +12,8 @@ import { FirstSidebar } from './FirstSidebar'
 import { SidebarList } from './SidebarList'
 
 export default function Sidebar({ ...props }: LeftSidebarProps) {
-  const {
-    handleToggleAdmin,
-    recentQuestions,
-    handleCloseAdmin,
-    handleSearchSubmit,
-    user
-  } = props
+  const { handleToggleAdmin, handleCloseAdmin, handleSearchSubmit, user } =
+    props
 
   const { fdsAlarmCnt, getFdsAlarmCnt } = useFdsAlarmCnt()
   useEffect(() => {
@@ -84,7 +79,6 @@ export default function Sidebar({ ...props }: LeftSidebarProps) {
       handleSearchSubmit,
       isSidebarOpen,
       sidebarContent,
-      recentQuestions,
       fdsAlarmCnt
     ]
   )
