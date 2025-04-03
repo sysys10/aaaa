@@ -11,7 +11,11 @@ export function useRefreshMutation() {
     mutationFn: getRefreshInfo,
     onSuccess: (data) => {
       setUser({
-        ...data.body
+        userId: data.body.userId,
+        companyId: data.body.companyId,
+        mngeYn: data.body.mngeYn,
+        useInttId: data.body.useInttId,
+        certCnt: data.body.certCnt
       })
       setIsBolcked(data.body.planStts == '0' && data.body.freeDDay <= 0)
     }

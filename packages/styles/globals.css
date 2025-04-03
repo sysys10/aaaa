@@ -71,7 +71,10 @@
 .placeholder-transition {
   transition: placeholder 0.5s ease;
 }
-
+.uniform-numbers {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
 @keyframes fadeInDown {
   from {
     opacity: 0;

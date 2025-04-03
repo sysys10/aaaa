@@ -24,6 +24,9 @@ export default function Topbar({ ...props }: NavbarProps) {
                   src={Logo}
                   alt='logo'
                   className='cursor-pointer w-24'
+                  loading='lazy'
+                  width='96'
+                  height='24'
                 />
               </div>
             </div>

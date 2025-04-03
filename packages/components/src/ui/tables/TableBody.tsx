@@ -25,7 +25,7 @@ export const TableBody = memo(
                   zIndex: cellIndex === 0 ? 1 : 'auto',
                   backgroundColor: cellIndex === 0 ? 'white' : 'inherit'
                 }}
-                className='px-4 py-2'
+                className='px-4 py-2 uniform-numbers'
               >
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>

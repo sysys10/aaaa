@@ -44,7 +44,7 @@ function useRemoveRecentQuestionMutation({
     mutationFn: postRemoveRecentQuestion,
     onSuccess: async (data, _, __) => {
       if (data.success) {
-        const response = await postRecentQuestions({ userId: 'daquv03' })
+        const response = await postRecentQuestions()
         if (response.success) {
           setRecentQuestions(response.body)
         }

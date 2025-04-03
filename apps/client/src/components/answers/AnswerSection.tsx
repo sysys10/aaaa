@@ -6,6 +6,8 @@ import { AnswerSectionProps } from '@types'
 
 import { ChatBox } from './ChatBox'
 
+const TOPBAR_HEIGHT = 0
+
 export function AnswerSection({ ...props }: AnswerSectionProps) {
   const { results, searchIsLoading, isFirstSearch } = props
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -13,8 +15,6 @@ export function AnswerSection({ ...props }: AnswerSectionProps) {
   const answerSectionRef = useRef<HTMLDivElement>(null)
   const chatBoxesRef = useRef<HTMLDivElement>(null)
   const questionRefs = useRef<(HTMLDivElement | null)[]>([])
-
-  const TOPBAR_HEIGHT = 0
 
   // 결과 길이가 변경될 때만 questionRefs 업데이트
   useEffect(() => {
@@ -73,7 +73,6 @@ export function AnswerSection({ ...props }: AnswerSectionProps) {
     }
   }, [results.length])
 
-  // 스크롤 제어 함수들을 useCallback으로 메모이제이션
   const scrollToTop = useCallback(() => {
     if (!answerSectionRef.current) return
     answerSectionRef.current.scrollTo({
@@ -166,6 +165,6 @@ export function AnswerSection({ ...props }: AnswerSectionProps) {
         </div>
       </section>
     ),
-    [results, searchIsLoading, isFirstSearch, currentQuestionIndex]
+    [results, searchIsLoading, isFirstSearch]
   )
 }

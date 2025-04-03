@@ -41,7 +41,7 @@ const useSearchHook = ({
         handleSearch('')
       }
     },
-    [searchMutation, results]
+    [searchMutation, results, searchIsSuccess, handleSearch]
   )
 
   const returnValue = useMemo(

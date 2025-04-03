@@ -7,8 +7,11 @@ const useSearchResult = () => {
   const [isFirstSearch, setIsFirstSearch] = useState(true)
 
   useEffect(() => {
-    if (results.length > 0) setIsFirstSearch(false)
-  }, [results])
+    if (results.length > 0 && isFirstSearch) {
+      setIsFirstSearch(false)
+    }
+  }, [results, isFirstSearch])
+
   const handleResetResults = () => {
     setResults([])
     setIsFirstSearch(true)

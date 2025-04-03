@@ -1,93 +1,17 @@
-import { useState } from 'react'
-
 import { NewsChartTable } from '@components/answers/charts/NewsChartTable'
-import CustomIcons from '@components/common/CustomIcons'
 import DayPicker from '@components/common/datePicker/DayPicker'
 import MonthPicker from '@components/common/datePicker/MonthPicker'
 import WeekPicker from '@components/common/datePicker/WeekPicker'
 import { Skeleton } from '@components/ui/skeleton/Skeleton'
 
-import {
-  getMonthReportDate,
-  getWeekReportDate,
-  useReport
-} from '@hooks/useReport'
+import { getWeekReportDate } from '@hooks/useReport'
+import { getMonthReportDate } from '@hooks/useReport'
 
 import { ReportData } from '@types'
 
 import { Button } from '@packages/components'
 
-const REPORT_LIST = [
-  { title: '자금일보', subTitle: '전일 자금 일보' },
-  { title: '자금주보', subTitle: '전주 월~일요일 자금 주보' },
-  { title: '자금월보', subTitle: '전월 1일~말일 자금 월보' },
-  { title: '일일시재마감', subTitle: '일일 시재 마감' }
-]
-
-export default function ReportList() {
-  const { report, isReportLoading, handleGetReport, handleResetReport } =
-    useReport()
-
-  const [isNewsOpen, setIsNewsOpen] = useState('')
-
-  const handleToggleNews = (v: string) => {
-    if (v === '자금일보') {
-      setIsNewsOpen('자금일보')
-      handleGetReport(undefined, undefined, 'D')
-    } else if (v === '자금주보') {
-      setIsNewsOpen('자금주보')
-      handleGetReport(undefined, undefined, 'W')
-    } else if (v === '자금월보') {
-      setIsNewsOpen('자금월보')
-      handleGetReport(undefined, undefined, 'M')
-    } else if (v === '일일시재마감') {
-      setIsNewsOpen('일일시재마감')
-      handleGetReport(undefined, undefined, 'A')
-    }
-  }
-  const handleCloseModal = () => {
-    setIsNewsOpen('')
-    handleResetReport()
-  }
-
-  return (
-    <>
-      <div className='w-full px-3'>
-        <div className='flex px-3 py-2 bg-background-secondary items-center rounded-lg tracking-tight text-sm text-aicfo w-full'>
-          보고서
-        </div>
-      </div>
-      <div className='flex flex-col gap-1 p-2 w-full'>
-        <ReportModal
-          handleCloseModal={handleCloseModal}
-          report={report}
-          handleGetReport={handleGetReport}
-          isNewsOpen={isNewsOpen}
-          isReportLoading={isReportLoading}
-        />
-        {REPORT_LIST.map((v, i) => (
-          <div key={i}>
-            <div
-              onClick={() => {
-                handleToggleNews(v.title)
-              }}
-              className={`flex group hover:bg-background-secondary transition-colors duration-300 cursor-pointer relative items-center justify-between rounded-lg ${
-                isNewsOpen === v.title ? 'bg-background-secondary' : ''
-              }`}
-            >
-              <div className='flex flex-col flex-1 pl-3 py-2.5'>
-                <div className='text-sm font-medium'>{v.title}</div>
-                <div className='text-[#767676] text-xs'>{v.subTitle}</div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
-  )
-}
-
-function ReportModal({
+export default function ReportModal({
   handleCloseModal,
   isNewsOpen,
   report,

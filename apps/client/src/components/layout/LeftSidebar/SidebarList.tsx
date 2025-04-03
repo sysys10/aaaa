@@ -5,7 +5,7 @@ import { SidebarListProps } from '@types'
 
 import { FdsLists } from './Fds/FdsLists'
 import { RecentQuestionList } from './RecentQuestion'
-import ReportList from './Report'
+import ReportList from './Report/ReportList'
 
 export function SidebarList({
   sidebarContent,

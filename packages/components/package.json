@@ -24,7 +24,9 @@
   },
   "scripts": {
     "lint": "eslint src/",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -36,19 +38,29 @@
     "@tanstack/react-table": "^8.20.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "tailwind-merge": "^2.1.0",
-    "react-table": "^7.8.0"
+    "react-table": "^7.8.0",
+    "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
     "@packages/eslint-config": "workspace:*",
     "@packages/styles": "workspace:*",
     "@packages/ts-config": "workspace:*",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/addon-onboarding": "^8.6.12",
+    "@storybook/addon-webpack5-compiler-swc": "^3.0.0",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/react": "^8.6.12",
+    "@storybook/react-webpack5": "^8.6.12",
+    "@storybook/test": "^8.6.12",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@types/react-table": "^7.7.20",
     "eslint": "^8.55.0",
+    "eslint-plugin-storybook": "^0.12.0",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "storybook": "^8.6.12",
     "typescript": "^5.3.3"
   }
 }
